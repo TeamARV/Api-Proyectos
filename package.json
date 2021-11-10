@@ -1,0 +1,11 @@
+{
+  "name": "Api-Proyectos",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "TeamARV <andresriveravega@msn.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12"
+  }
+}
