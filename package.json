@@ -1,9 +1,12 @@
 {
   "name": "Api-Proyectos",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "author": "TeamARV <andresriveravega@msn.com>",
   "license": "MIT",
+
+  "scripts": {"start":"ts-node server.ts"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^6.0.12"
