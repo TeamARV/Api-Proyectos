@@ -1,7 +1,7 @@
 import {connect} from "mongoose"
 
 const conexion = async () => {
-    return await connect("string de conexion aqui :D ")
+    return await connect("alskdjfñlasdkjf añsldjkalskdj asdlfkjlaksjdf :D")
     .then( ()=>{
         console.log("Conexion OK :D")
     })

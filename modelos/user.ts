@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
 import { model } from "mongoose";
-import {Enum_rol} from "./enums"
+import {Enum_rol,Enum_Estado} from "./enums"
 
 
 
@@ -9,6 +9,7 @@ interface User{
     identificacion:string;
     nombreCompleto:string;
     rol:Enum_rol;
+    estado:Enum_Estado;
 }
 
 const userShema =  new Schema<User> 
@@ -16,6 +17,11 @@ const userShema =  new Schema<User>
         correo:{
             type:String,
             required:true,
+            validate:{validator: (email)=>
+                {
+                    if(!email.includes("@")) return false;
+                }
+            }
         },
 
         identificacion:{
@@ -34,10 +40,16 @@ const userShema =  new Schema<User>
             required:true,
             enum:Enum_rol, 
 
+        },
+        estado:{
+            type:String,
+            required:true,
+            default:Enum_Estado.pendiente,
         }
+
 
 })
 
 
-const userModel = model("user",userShema) // user nombre cualquiera
+const userModel = model("user",userShema,"Usuarios") // user nombre cualquiera
 export  {userModel}
