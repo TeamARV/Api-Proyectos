@@ -1,9 +1,12 @@
 import {connect} from "mongoose"
 
+
+
+
 const conexion = async () => {
-    return await connect("mongodb+srv://InsertName:InsertName@cluster0.ecdfl.mongodb.net/InsertName?retryWrites=true&w=majority")
+    return await connect(process.env.DATABASE_URL)
     .then( ()=>{
-        console.log("Conexion OK :D")
+        console.log("Conexion a atlas mongo  OK OK :D")
     })
     .catch( (e)  =>{
         console.error("Rip algo fallo :(" , e )
