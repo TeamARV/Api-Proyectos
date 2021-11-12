@@ -29,11 +29,18 @@ enum Enum_objetivo{
  
 }
 
+enum Enum_estadoInscripcion{
+    rechazada = "Rechazada",
+    aceptada ="Aceptada",          
+ 
+}
+
 
 export {
     Enum_rol,
     Enum_Estado,
     Enum_EstadoProyecto,
     Enum_Fase,
-    Enum_objetivo
+    Enum_objetivo,
+    Enum_estadoInscripcion
 }
