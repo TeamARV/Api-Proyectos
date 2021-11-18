@@ -67,18 +67,29 @@ const resolvers = {
                     
             })
             return usuarioEdit;
+        },
+
+        /*  */
+
+        crearProyecto: async (parent,args) => {
+            const newProyecto = projectModel.create({
+                nombre:args.nombre,
+                presupuesto:args.presupuesto,
+                fechaInicio:args.fechaInicio,
+                fechaFin:args.fechaFin,
+                estado:args.estado,
+                fase:args.fase,
+                lider:args.lider,
+                objetivos:[{descripcion:"adslkfjgeneral", tipo:"GENERAL"}]
+            })
+            return newProyecto;
         }
+
+
 
 
     },
     
-
-  
-
-
-    
-
-
 }
 
 export {resolvers}

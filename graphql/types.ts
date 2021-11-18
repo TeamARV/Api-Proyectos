@@ -90,9 +90,25 @@ type Mutation{
     rol:Enum_rol
     estado:Enum_Estado
     ):usuario
+
+
+    """ más xmen """
+
+    crearProyecto(
+    nombre:String!
+    presupuesto:Float!
+    fechaInicio:Date!
+    fechaFin:Date!
+    estado:Enum_EstadoProyecto!
+    fase:Enum_Fase!
+    lider:String!
+    ):Proyecto
+    
+
+    
+
+
 }
-
-
 ` 
 
 export {typeDefs}
