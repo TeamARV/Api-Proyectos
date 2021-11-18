@@ -2,113 +2,94 @@
 import { gql } from "apollo-server-express";
 
 
-
 const typeDefs = gql`
-""" sclares para tipos """
-scalar Date
-""" los enums """
-enum Enum_Estado {
+  scalar Date
+  enum Enum_EstadoUsuario {
     PENDIENTE
     AUTORIZADO
-    NOAUTORIZADO
-} 
-enum Enum_rol {
-    ESTUDIANTE
-    LIDER
-    ADMIN
-} 
-
-enum Enum_EstadoProyecto{
-    ACTIVO 
-    INACTIVO 
-}
-enum Enum_Fase{
-    INICIADO 
-    DESARROLLO          
-    TERMINADO 
-    NULO 
-}
-enum Enum_objetivo{
-    GENERAL 
-    ESPECIFICO         
-}
-
-type usuario{
-    _id: ID!  """ ! ESE SIMBOLO ES PARA REQUERIDOS """ 
-    correo:String!    
-    identificacion:String!
-    nombreCompleto:String!
-    rol:Enum_rol!
-    estado:Enum_Estado!
-}
-
-"""  """
-type Objetivo {
-    descripcion:String!
-    tipo:Enum_objetivo!
-}
-type Proyecto{
-    _id: ID!  """ ! ESE SIMBOLO ES PARA REQUERIDOS """ 
-    nombre:String!
-    presupuesto:Float!
-    fechaInicio:Date!
-    fechaFin:Date!
-    estado:Enum_EstadoProyecto!
-    fase:Enum_Fase!
-    lider:usuario!
+    NO_AUTORIZADO
+  }
+  enum Enum_Rol {
+    ESTUDIANTE 
+    LIDER 
+    ADMIN 
+  }
+  enum Enum_EstadoProyecto {
+    ACTIVO
+    INACTIVO
+  }
+  enum Enum_FaseProyecto {
+    INICIADO
+    DESARROLLO
+    TERMINADO
+    NULO
+  }
+  enum Enum_TipoObjetivo {
+    GENERAL
+    ESPECIFICO
+  }
+  type Usuario {
+    _id: ID!
+    nombreCompleto: String!
+    identificacion: String!
+    correo: String!
+    rol: Enum_Rol!
+    estado: Enum_EstadoUsuario
+  }
+  type Objetivo {
+    _id: ID!
+    descripcion: String!
+    tipo: Enum_TipoObjetivo!
+  }
+  input crearObjetivo {
+    descripcion: String!
+    tipo: Enum_TipoObjetivo!
+  }
+  type Proyecto {
+    _id: ID!
+    nombre: String!
+    presupuesto: Float!
+    fechaInicio: Date!
+    fechaFin: Date!
+    estado: Enum_EstadoProyecto!
+    fase: Enum_FaseProyecto!
+    lider: Usuario!
     objetivos: [Objetivo]
-}
-
-type Query{
-    Usuarios:[usuario]
-    SoloUNusuario(_id:String!):usuario
-    Proyectos:[Proyecto]
-}
-
-type Mutation{
-
+  }
+  type Query {
+    Usuarios: [Usuario]
+    Usuario(_id: String!): Usuario
+    Proyectos: [Proyecto]
+  }
+  type Mutation {
     crearUsuario(
-    correo:String!    
-    identificacion:String!
-    nombreCompleto:String!
-    rol:Enum_rol
-    ):usuario
+      nombreCompleto: String!
+      identificacion: String!
+      correo: String!
+      rol: Enum_Rol!
+      estado: Enum_EstadoUsuario
+    ): Usuario
 
-    """ más xmen """
-
-    delUsuario(
-        _id:String!
-    ):usuario
-
-    """ más xmen """
-
-    editUsuario(
-    _id:String
-    correo:String  
-    identificacion:String
-    nombreCompleto:String
-    rol:Enum_rol
-    estado:Enum_Estado
-    ):usuario
-
-
-    """ más xmen """
-
+    editarUsuario(
+      _id: String!
+      nombreCompleto: String
+      identificacion: String
+      correo: String
+      rol: Enum_Rol
+      estado: Enum_EstadoUsuario
+    ): Usuario
+    eliminarUsuario(_id: String, correo: String): Usuario
     crearProyecto(
-    nombre:String!
-    presupuesto:Float!
-    fechaInicio:Date!
-    fechaFin:Date!
-    estado:Enum_EstadoProyecto!
-    fase:Enum_Fase!
-    lider:String!
-    ):Proyecto
-    
+      nombre: String!
+      presupuesto: Float!
+      fechaInicio: Date!
+      fechaFin: Date!
+      estado: Enum_EstadoProyecto!
+      fase: Enum_FaseProyecto!
+      lider: String!
+      objetivos: [crearObjetivo]
+    ): Proyecto
+  }
+`;
 
-    
-
-
-}
-` 
-
-export {typeDefs}
+export { typeDefs };
