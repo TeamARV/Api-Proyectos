@@ -20,7 +20,7 @@ enum Enum_Fase{
     INICIADO = "INICIADO",
     DESARROLLO ="DESARROLLO",          
     TERMINADO ="TERMINADO",
-    NULO = "NULO",
+    NULO = "null",
 }
 
 enum Enum_objetivo{

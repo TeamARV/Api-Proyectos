@@ -12,7 +12,6 @@ enum Enum_Estado {
     AUTORIZADO
     NOAUTORIZADO
 } 
-
 enum Enum_rol {
     ESTUDIANTE
     LIDER
@@ -23,21 +22,17 @@ enum Enum_EstadoProyecto{
     ACTIVO 
     INACTIVO 
 }
-
 enum Enum_Fase{
     INICIADO 
     DESARROLLO          
     TERMINADO 
     NULO 
 }
-
 enum Enum_objetivo{
     GENERAL 
     ESPECIFICO         
 }
 
-""" terminan los enums """
-"""  """
 type usuario{
     _id: ID!  """ ! ESE SIMBOLO ES PARA REQUERIDOS """ 
     correo:String!    
@@ -46,13 +41,12 @@ type usuario{
     rol:Enum_rol!
     estado:Enum_Estado!
 }
+
 """  """
 type Objetivo {
     descripcion:String!
     tipo:Enum_objetivo!
-
 }
-
 type Proyecto{
     _id: ID!  """ ! ESE SIMBOLO ES PARA REQUERIDOS """ 
     nombre:String!
@@ -65,13 +59,10 @@ type Proyecto{
     objetivos: [Objetivo]
 }
 
-
-
 type Query{
     Usuarios:[usuario]
     SoloUNusuario(_id:String!):usuario
     Proyectos:[Proyecto]
-
 }
 
 type Mutation{
@@ -81,7 +72,6 @@ type Mutation{
     identificacion:String!
     nombreCompleto:String!
     rol:Enum_rol
-
     ):usuario
 
     """ más xmen """
@@ -90,6 +80,7 @@ type Mutation{
         _id:String!
     ):usuario
 
+    """ más xmen """
 
     editUsuario(
     _id:String
@@ -99,14 +90,9 @@ type Mutation{
     rol:Enum_rol
     estado:Enum_Estado
     ):usuario
-
-
-
 }
 
 
-
-
-`; 
+` 
 
 export {typeDefs}

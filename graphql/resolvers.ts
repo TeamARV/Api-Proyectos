@@ -5,25 +5,31 @@ import { userModel } from "../modelos/user"
 const resolvers = {
 
     Query:
+    
     {
-        /*  */
+
         Usuarios: async (parent,args)=>{
             const usarios = await userModel.find()
             return usarios
 
         },
-        /*  */
-        SoloUNusuario: async (parent,args) =>{
+
+         /*  */
+         SoloUNusuario: async (parent,args) =>{
             const elUsuario = await userModel.findOne({_id:args._id})
             return elUsuario;
         },
+
         /*  */
+
         Proyectos: async (parent,args) =>{
-            const losProyectos = await projectModel.find()
+            const losProyectos = await projectModel.find().populate("lider")
             return losProyectos;
         },
+   
 
     },
+    /* los xmen aqui :D */
 
     Mutation: {
         /*  */
@@ -40,8 +46,6 @@ const resolvers = {
 
                 })
                 return usuarioNew;
-
-            
         },
         /*  */
         delUsuario: async (parent,args) =>{
@@ -49,8 +53,11 @@ const resolvers = {
             return usuarioDeleteado;
 
         },
+
         /*  */
-        editUsuario: async (parent,args) =>{
+
+         /*  */
+         editUsuario: async (parent,args) =>{
             const usuarioEdit = userModel.findByIdAndUpdate(args._id,{
                     correo:args.correo,  
                     identificacion:args.identificacion,
@@ -62,6 +69,16 @@ const resolvers = {
             return usuarioEdit;
         }
 
-    }}
+
+    },
+    
+
+  
+
+
+    
+
+
+}
 
 export {resolvers}
