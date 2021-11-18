@@ -15,7 +15,7 @@ const main = async () =>{
         correo:"algo@gmail.com",
         identificacion:"123fg",
         nombreCompleto:"TeamARV",
-        rol:Enum_rol.admin,
+        rol:Enum_rol.ADMIN,
 
     })
     .then((u)=>{console.log("el esquema usuario fue creado :D " , u)})
@@ -82,7 +82,7 @@ const CrearProyecto = async () =>{
 
 const ObtenerProyecto = async () =>{
     await conexion();
-    await projectModel.find({nombre:"proyecto123666"}).populate("lider")  //  ejemplo   populate('author', 'name'). // only return the Persons name  // otra forma { path: 'lider', select: 'correo' }
+    await projectModel.find({nombre:"proyecto123666"}).populate("LIDER")  //  ejemplo   populate('author', 'name'). // only return the Persons name  // otra forma { path: 'lider', select: 'correo' }
     /* .then((u)=>{console.log("trajo esto",JSON.stringify( u[0].objetivos ) )})  */    // dentro del find puedo agregar props {nombreCompleto:"blabla"}
     .then((u)=>{console.log("trajo esto",u )}) 
     .catch((e)=>{console.log("No trajo nada :( ",e)})

@@ -43,11 +43,11 @@ const projectShema =  new Schema<Project>
     },
     estado:{
         type:String,
-        default:Enum_EstadoProyecto.inactivo
+        default:Enum_EstadoProyecto.INACTIVO,
     },
     fase:{
         type:String,
-        default:Enum_Fase.nulo
+        default:Enum_Fase.NULO,
     },
     lider:{
         type: Schema.Types.ObjectId,
@@ -63,7 +63,7 @@ const projectShema =  new Schema<Project>
         tipo:{
             type:String,
             enum:Enum_objetivo,
-        }
+        },
         
     }]
 

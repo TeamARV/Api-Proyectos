@@ -9,7 +9,7 @@ import {resolvers} from "./graphql/resolvers"
 
 
 
-dotenv.config();
+dotenv.config(); // para poder usar las variables de entorno en todo
 
 const server = new ApolloServer(
     {
